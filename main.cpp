@@ -1,33 +1,32 @@
 #include <iostream>
 using namespace std;
-//1. Creating make file
-//2. Swap the value in the array using pointers** to help
-//3. Take input from argv
 
-
-int main(int argc, char **argv){
- int i,n,*a;
-			n=argc-1;
- 		     a=new int[n];
-			for(i=0;i<n;i++) {
-			    a[i]=atoi(argv[i]);
-		       cout<< "a[" << i << "]=" <<a[i]<<endl;
-		}
-
-    int*p=a;
-    int*pb;
-
-
-  
-     // Using p within your program 
-  for(i=0;i<n;i++) {
- 		   cout<<p[i]<<" "; //p is the location where p points to
- //     p++;  
- }
-
- delete [] a;  
+void swap(int * p, int *pb, int n){
+  int i;
+  for (i=0; i<n/2; i++) {
+      int temp=*p;
+      *p=*pb;
+      *pb=temp;
+      p++;
+      pb--;
+  }
 }
 
-  
-//}
-
+int main(int argc, char **argv) {
+    int n=argc-1;
+    int i;
+    int *a=new int[n];
+    cout<<"Original Array:"<<endl;
+    for (i=0; i<n; i++){
+        a[i] = atoi(argv[i + 1]);
+        cout<<"a["<<i<<"] = "<<a[i]<<endl;
+    }
+    int *p=a;
+    int *pb=&a[n-1];
+    swap(p, pb, n);
+    cout<<endl<<"Swapped Array:"<<endl;
+    for (i = 0; i<n; i++) 
+        cout<<"a["<<i<<"] = "<<a[i]<<endl;
+    delete[] a;
+    return 0;
+}
