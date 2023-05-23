@@ -29,4 +29,5 @@ int main(int argc, char **argv) {
         cout<<"a["<<i<<"] = "<<a[i]<<endl;
     delete[] a;
     return 0;
+  
 }
